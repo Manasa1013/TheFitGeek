@@ -1,0 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
+.App {
+  text-align: center;
+}
+input {
+  width: 80%;
+  color: purple;
+  border-block-start-style: Calibri;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-weight: 2rem;
+  text-emphasis: bold;
+}
+body {
+  font-family: "Montserrat", sans-serif;
+  margin: 0px;
+}
+nav {
+  box-shadow: 1px 5px 14px 0px rgba(1, 60, 255, 0.158);
+}
