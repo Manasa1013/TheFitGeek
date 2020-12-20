@@ -79,11 +79,11 @@ export default function App() {
     textDecoration: "none",
     cursor: "pointer",
     backgroundColor: "var(--background-grey)",
-    color: "#63ff8f",
+    color: "var(--github-black)",
     // boxShape: "border-box",
     borderRadius: "0.5rem",
     border: "1px solid var(--yours-green)",
-    fontWeight: "bold",
+    fontWeight: "500",
     padding: "0.5rem",
     margin: "0.5rem",
     display: "inline"
