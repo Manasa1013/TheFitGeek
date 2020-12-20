@@ -2,72 +2,107 @@ import React, { useState } from "react";
 import "./styles.css";
 
 //defining practices first
-const yoga = ["Warmup", "Asana-Library", "Suryanamaskar", "Relaxation"];
-const meditation = [
-  "Beginner-guide to Meditation",
-  "Pranayama",
-  "Stress-reduction",
-  "Understanding the mind"
+const yoga = [
+  { name: "Warmup", level: "" },
+  { name: "Asana-Library", level: "intermediate" },
+  { name: "Suryanamaskar", level: "beginner" },
+  { name: "Relaxation", level: "" }
 ];
+const meditation = [
+  { name: "Beginner-guide to Meditation", level: "beginner" },
+  { name: "Pranayama", level: "beginner" },
+  { name: "Stress-reduction", level: "beginner-intermediate" },
+  { name: "Understanding the mind", level: "advanced" }
+];
+
 const dancefitness = [
-  "Beginner Cardio Dance",
-  "Cardio Tone and Dance",
-  "Cardio Dance with Punjabi Songs",
-  "Belly Dancing",
-  "Dance for Joy"
+  { name: "Beginner Cardio Dance", level: "beginner" },
+  { name: "Cardio Tone and Dance", level: "intermediate" },
+  { name: "Cardio Dance with Punjabi Songs", level: "advanced" },
+  { name: "Belly Dancing", level: "beginner-intermediate" },
+  { name: "Dance for Joy", level: "beginner" }
 ];
 const weightloss = [
-  "Calorie-crush",
-  "Calorie-crush",
-  "HIIT",
-  "Abs,butt and thigh",
-  "Strength",
-  "Belly burn"
+  { name: "Calorie-crush", level: "intermediate" },
+  { name: "HIIT", level: "intermediate-advanced" },
+  { name: "Abs,butt and thigh", level: "intermediate" },
+  { name: "Strength", level: "intermediate" },
+  { name: "Belly burn", level: "advanced" }
 ];
-const workfromhomeTips = [
-  "Stay Active",
-  "Healthy Spine",
-  "5 min workout",
-  "Stretch and Release",
-  "Move well"
+const workfromhometips = [
+  { name: "Stay Active", level: "intermediate" },
+  { name: "Healthy Spine", level: "intermediate" },
+  { name: "5 min workout", level: "advanced" },
+  { name: "Stretch and Release", level: "intermediate" }
 ];
 const fitterWays = {
+  workFromHomeTips: workfromhometips,
   yoga: yoga,
   meditation: meditation,
   danceFitness: dancefitness,
-  weightLoss: weightloss,
-  workFromHomeTips: workfromhomeTips
+  weightLoss: weightloss
 };
 const fitterWaysKeys = Object.keys(fitterWays);
 
 export default function App() {
-  var [workOuts, setWorkOuts] = useState("yoga");
+  var [workOuts, setWorkOuts] = useState("workFromHomeTips");
   function onClickHandler(way) {
     setWorkOuts(way);
   }
   const styleNavigation = {
     backgroundColor: "#3ff39f",
-    color: "white",
+    color: "#24292e",
     padding: "1rem",
+    fontWeight: "bolder",
+    fontSize: "550",
     borderBottomLeftRadius: "1rem",
     textAlign: "right",
     margin: "0px"
   };
+  const styleSpan = {
+    color: "#3ff39f"
+  };
   const styleDiv = {};
   const styleImage = {
     maxWidth: "80%",
-    width: "350px",
+    width: "300px",
     display: "block",
-    margin: "1rem"
+    margin: "auto",
+    paddingTop: "1rem"
   };
   const styleUnorderList = {
     listStyle: "none",
     display: "inline-block",
     padding: "1em 2em"
   };
+  const styleListKeys = {
+    textDecoration: "none",
+    cursor: "pointer",
+    backgroundColor: "var(--background-grey)",
+    color: "#63ff8f",
+    // boxShape: "border-box",
+    borderRadius: "0.5rem",
+    border: "1px solid var(--yours-green)",
+    fontWeight: "bold",
+    padding: "0.5rem",
+    margin: "0.5rem",
+    display: "inline"
+  };
   const styleList = {
     textDecoration: "none",
-    cursor: "pointer"
+    borderRadius: "0.3rem",
+    padding: "1rem",
+    border: "2px solid var(--border-grey)",
+    margin: "1rem"
+  };
+  const styleListName = {
+    fontSize: "larger",
+    display: "block-inline"
+  };
+  const styleListLevel = {
+    fontSize: "smaller",
+    fontWeight: "200",
+    color: "grey"
   };
   return (
     <div className="App" style={styleDiv}>
@@ -86,40 +121,58 @@ export default function App() {
           src="../image/workout.png"
           alt=""
         />
-        <h1 className="minds-heading">
-          Stronger,<span className="heading-inverted">Faster,Better</span>
+        <h1>
+          FitStart <span style={styleSpan}>through</span>
         </h1>
       </header>
-      <h2>
-        Get stronger through
-        <ul style={styleUnorderList}>
-          {fitterWaysKeys.map((way) => (
-            <li onClick={() => onClickHandler(way)} style={styleList}>
-              {way}
-            </li>
-          ))}
-        </ul>
-      </h2>
+
+      <ul style={styleUnorderList}>
+        {fitterWaysKeys.map((way) => (
+          <li
+            style={styleListKeys}
+            key={way.id}
+            onClick={() => onClickHandler(way)}
+          >
+            {way}
+          </li>
+        ))}
+      </ul>
+
       <div style={styleDiv}>
         <ul style={styleUnorderList}>
-          <li style={styleList}>
-            {Object.values(fitterWays[workOuts]).map((way) => way)}
-          </li>
+          {Object.values(fitterWays[workOuts]).map(function (way) {
+            return (
+              <li style={styleList} key={way.name}>
+                <div style={styleListName}>{way.name}</div>
+                <div style={styleListLevel}>{way.level}</div>
+              </li>
+            );
+          })}
         </ul>
       </div>
-      <footer id="main-footer">
-        <div class="icons">
-          <a href="https://www.instagram.com/manasamandalreddy">
-            <em class="fab fa-instagram fa-2x"></em>
-          </a>
-          <a href="https://www.linkedin.com/in/manasa-mandalreddylreddy">
-            <em class="fab fa-linkedin fa-2x"></em>
-          </a>
-          <a href="https://github.com/Manasa1013">
-            <em class="fab fa-github fa-2x"></em>
-          </a>
-        </div>
-        Copyright &copy; 2020
+      <footer className="footer">
+        <div className="footer-header">social media presence</div>
+        <ul className="social-links list-non-bullet">
+          <li className="list-item-inline">
+            <a className="link" href="https://github.com/Manasa1013">
+              <em className="fab fa-github fa-2x"></em>
+            </a>
+          </li>
+          <li className="list-item-inline">
+            <a
+              className="link"
+              href="https://www.linkedin.com/in/manasa-mandalreddy/"
+            >
+              <em className="fab fa-linkedin fa-2x"></em>
+            </a>
+          </li>
+          <li className="list-item-inline">
+            <a className="link" href="https://instagram.com/manasamandalreddy_">
+              <em className="fab fa-instagram fa-2x"></em>
+            </a>
+          </li>
+        </ul>
+        <div className="footer-copy">Copyright &copy; 2020</div>
       </footer>
     </div>
   );
