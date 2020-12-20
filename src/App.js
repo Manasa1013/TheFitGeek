@@ -151,7 +151,7 @@ export default function App() {
         </ul>
       </div>
       <footer className="footer">
-        <div className="footer-header">social media presence</div>
+        <div className="footer-header">Let's connect</div>
         <ul className="social-links list-non-bullet">
           <li className="list-item-inline">
             <a className="link" href="https://github.com/Manasa1013">
