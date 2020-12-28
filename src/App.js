@@ -62,7 +62,9 @@ export default function App() {
   const styleSpan = {
     color: "#3ff39f"
   };
-  const styleDiv = {};
+  const styleDiv = {
+    overflow: "auto"
+  };
   const styleImage = {
     maxWidth: "80%",
     width: "300px",
@@ -78,6 +80,7 @@ export default function App() {
   const styleListKeys = {
     textDecoration: "none",
     cursor: "pointer",
+    overflow: "auto",
     backgroundColor: "var(--background-grey)",
     color: "var(--github-black)",
     // boxShape: "border-box",
@@ -125,20 +128,20 @@ export default function App() {
           FitStart <span style={styleSpan}>through</span>
         </h1>
       </header>
-
-      <ul style={styleUnorderList}>
-        {fitterWaysKeys.map((way) => (
-          <li
-            style={styleListKeys}
-            key={way.id}
-            onClick={() => onClickHandler(way)}
-          >
-            {way}
-          </li>
-        ))}
-      </ul>
-
       <div style={styleDiv}>
+        <ul style={styleUnorderList}>
+          {fitterWaysKeys.map((way) => (
+            <li
+              style={styleListKeys}
+              key={way.id}
+              onClick={() => onClickHandler(way)}
+            >
+              {way}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div>
         <ul style={styleUnorderList}>
           {Object.values(fitterWays[workOuts]).map(function (way) {
             return (
