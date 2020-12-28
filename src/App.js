@@ -86,7 +86,7 @@ export default function App() {
     fontWeight: "500",
     padding: "0.5rem",
     margin: "0.5rem",
-    display: "inline"
+    display: "inline-flex"
   };
   const styleList = {
     textDecoration: "none",
